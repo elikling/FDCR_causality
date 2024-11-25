@@ -1,0 +1,11 @@
+jupyter
+ipywidgets
+numpy
+pandas
+scikit-learn  # Includes linear regression and mean squared error
+statsmodels   # For additional statistical modeling capabilities
+matplotlib
+seaborn
+networkx
+dowhy
+tqdm          # To suppress TqdmWarning
