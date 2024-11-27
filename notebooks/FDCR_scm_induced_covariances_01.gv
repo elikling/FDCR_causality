@@ -1,0 +1,79 @@
+digraph FDCR_scm_induced_covariances_01 {
+	overlap=scale
+	splines=True
+	edge [fontsize=12]
+	node [fillcolor=white]
+	node [color=black]
+	node [shape=""]
+	node [style=filled]
+	node [fontsize=12]
+	node [shape=circle]
+	node [shape=triangle]
+	Perceived_Noise [label=Perceived_Noise]
+	node [shape=invtriangle]
+	Winter_Ind [label=Winter_Ind]
+	node [shape=box]
+	Winter_Ind [label=Winter_Ind]
+	Sea_Temperature [label=Sea_Temperature]
+	Wind_Speed [label=Wind_Speed]
+	Strength_Degradation [label=Strength_Degradation]
+	Rotational_RPM [label=Rotational_RPM]
+	Energy_Yield [label=Energy_Yield]
+	Perceived_Noise [label=Perceived_Noise]
+	Winter_Ind -> Winter_Ind [label="p-value =    0.0000
+ Est. =      0.21" color=black dir=both lblstyle="above, sloped"]
+	Sea_Temperature -> Winter_Ind [label="p-value =    0.0000
+ Est. =     -2.10" color=black dir=both lblstyle="above, sloped"]
+	Wind_Speed -> Winter_Ind [label="p-value =    0.0000
+ Est. =      4.20" color=black dir=both lblstyle="above, sloped"]
+	Strength_Degradation -> Winter_Ind [label="p-value =    0.0000
+ Est. =     -0.00" color=black dir=both lblstyle="above, sloped"]
+	Rotational_RPM -> Winter_Ind [label="p-value =    0.0000
+ Est. =      0.42" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Winter_Ind [label="p-value =    0.0000
+ Est. =      0.28" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Winter_Ind [label="p-value =    0.0000
+ Est. =     -0.75" color=black dir=both lblstyle="above, sloped"]
+	Sea_Temperature -> Sea_Temperature [label="p-value =    0.0000
+ Est. =     24.97" color=black dir=both lblstyle="above, sloped"]
+	Wind_Speed -> Sea_Temperature [label="p-value =    0.0000
+ Est. =    -41.92" color=black dir=both lblstyle="above, sloped"]
+	Strength_Degradation -> Sea_Temperature [label="p-value =    0.0000
+ Est. =      0.00" color=black dir=both lblstyle="above, sloped"]
+	Rotational_RPM -> Sea_Temperature [label="p-value =    0.0000
+ Est. =     -4.19" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Sea_Temperature [label="p-value =    0.0000
+ Est. =     -2.78" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Sea_Temperature [label="p-value =    1.0000
+ Est. =      7.47" color="#FFB414" dir=both lblstyle="above, sloped"]
+	Wind_Speed -> Wind_Speed [label="p-value =    0.1278
+ Est. =    184.89" color="#FFB414" dir=both lblstyle="above, sloped"]
+	Strength_Degradation -> Wind_Speed [label="p-value =    0.0000
+ Est. =     -0.00" color=black dir=both lblstyle="above, sloped"]
+	Rotational_RPM -> Wind_Speed [label="p-value =    0.0000
+ Est. =     18.49" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Wind_Speed [label="p-value =    0.0000
+ Est. =     12.27" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Wind_Speed [label="p-value =    1.0000
+ Est. =    -32.94" color="#FFB414" dir=both lblstyle="above, sloped"]
+	Strength_Degradation -> Strength_Degradation [label="p-value =    0.0000
+ Est. =      0.01" color=black dir=both lblstyle="above, sloped"]
+	Rotational_RPM -> Strength_Degradation [label="p-value =    0.0000
+ Est. =     -0.00" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Strength_Degradation [label="p-value =    0.0000
+ Est. =     -0.00" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Strength_Degradation [label="p-value =    0.0000
+ Est. =      0.00" color=black dir=both lblstyle="above, sloped"]
+	Rotational_RPM -> Rotational_RPM [label="p-value =    0.0000
+ Est. =      1.89" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Rotational_RPM [label="p-value =    0.0000
+ Est. =      1.25" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Rotational_RPM [label="p-value =    0.0000
+ Est. =     -3.37" color=black dir=both lblstyle="above, sloped"]
+	Energy_Yield -> Energy_Yield [label="p-value =    0.0000
+ Est. =      4.77" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Energy_Yield [label="p-value =    0.0000
+ Est. =     -2.23" color=black dir=both lblstyle="above, sloped"]
+	Perceived_Noise -> Perceived_Noise [label="p-value =    0.0000
+ Est. =      7.26" color=black dir=both lblstyle="above, sloped"]
+}

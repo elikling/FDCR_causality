@@ -1,0 +1,27 @@
+digraph Ledgend {
+	overlap=scale
+	splines=True
+	edge [fontsize=12]
+	node [fillcolor=white]
+	node [color=black]
+	node [shape=""]
+	node [style=filled]
+	node [fontsize=12]
+	node [shape=triangle]
+	Exogenous
+	node [shape=box]
+	Observed
+	node [shape=circle]
+	Latent
+	node [shape=invtriangle]
+	Outcome
+	node [shape=plain]
+	node [fillcolor=white]
+	node [color=white]
+	intercept
+	Exogenous -> Observed [label="Effect, adjusted pvalue < 0.05" color=black]
+	Observed -> Latent [label="Effect, adjusted pvalue > 0.05" color="#FF5800"]
+	Exogenous -> Observed [label="Covariance Equivalance, adjusted pvalue < 0.05" color=black dir=both]
+	Observed -> Latent [label="Covariance Equivalance, adjusted pvalue > 0.05" color="#FFB414" dir=both]
+	Latent -> Outcome [label="" color=black]
+}

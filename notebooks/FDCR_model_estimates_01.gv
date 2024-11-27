@@ -1,0 +1,61 @@
+digraph FDCR_model_estimates_01 {
+	overlap=scale
+	splines=True
+	edge [fontsize=12]
+	node [fillcolor=white]
+	node [color=black]
+	node [shape=""]
+	node [style=filled]
+	node [fontsize=12]
+	node [shape=circle]
+	Shaply [label=Shaply]
+	node [shape=triangle]
+	Winter_Ind [label=Winter_Ind]
+	Strength_Degradation [label=Strength_Degradation]
+	Shaply [label=Shaply]
+	node [shape=invtriangle]
+	Energy_Yield [label=Energy_Yield]
+	Perceived_Noise [label=Perceived_Noise]
+	node [shape=box]
+	Sea_Temperature [label=Sea_Temperature]
+	Wind_Speed [label=Wind_Speed]
+	Rotational_RPM [label=Rotational_RPM]
+	Energy_Yield [label=Energy_Yield]
+	Perceived_Noise [label=Perceived_Noise]
+	Winter_Ind [label=Winter_Ind]
+	Strength_Degradation [label=Strength_Degradation]
+	node [shape=plain]
+	node [fillcolor=white]
+	node [color=white]
+	"Sea_Temperature Intercept" [label="Sea_Temperature Intercept"]
+	"Wind_Speed Intercept" [label="Wind_Speed Intercept"]
+	"Rotational_RPM Intercept" [label="Rotational_RPM Intercept"]
+	"Energy_Yield Intercept" [label="Energy_Yield Intercept"]
+	"Perceived_Noise Intercept" [label="Perceived_Noise Intercept"]
+	"Sea_Temperature Intercept" -> Sea_Temperature [label="p-value =    0.0000
+ Est. =     19.99" color=black lblstyle="above, sloped"]
+	Winter_Ind -> Sea_Temperature [label="p-value =    0.0000
+ Est. =     -9.99" color=black lblstyle="above, sloped"]
+	"Wind_Speed Intercept" -> Wind_Speed [label="p-value =    0.0000
+ Est. =     39.62" color=black lblstyle="above, sloped"]
+	Sea_Temperature -> Wind_Speed [label="p-value =    0.0000
+ Est. =      0.02" color=black lblstyle="above, sloped"]
+	Wind_Speed -> Wind_Speed [label="p-value =    0.0000
+ Est. =     20.14" color=black lblstyle="above, sloped"]
+	"Rotational_RPM Intercept" -> Rotational_RPM [label="p-value =    0.0000
+ Est. =      1.22" color=black lblstyle="above, sloped"]
+	Strength_Degradation -> Rotational_RPM [label="p-value =    0.0000
+ Est. =     -0.01" color=black lblstyle="above, sloped"]
+	Winter_Ind -> Rotational_RPM [label="p-value =    0.0000
+ Est. =      0.10" color=black lblstyle="above, sloped"]
+	"Energy_Yield Intercept" -> Energy_Yield [label="p-value =    0.0000
+ Est. =      9.86" color=black lblstyle="above, sloped"]
+	Rotational_RPM -> Energy_Yield [label="p-value =    0.0000
+ Est. =      0.66" color=black lblstyle="above, sloped"]
+	"Perceived_Noise Intercept" -> Perceived_Noise [label="p-value =    0.0000
+ Est. =     22.66" color=black lblstyle="above, sloped"]
+	Rotational_RPM -> Perceived_Noise [label="p-value =    0.0000
+ Est. =     -1.78" color=black lblstyle="above, sloped"]
+	Shaply -> Energy_Yield [label="p-value =    0.0000
+ Est. =       nan" color=black lblstyle="above, sloped"]
+}

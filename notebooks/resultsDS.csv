@@ -1,0 +1,22 @@
+,i,j,var1,var2,V1,V2,Corr,R2,pvalue
+0,0,1,Winter_Ind,Sea_Temperature,1. Winter_Ind,2. Sea_Temperature,-0.9172360144526168,0.8413219062089211,0.0
+1,0,2,Winter_Ind,Wind_Speed,1. Winter_Ind,3. Wind_Speed,0.6737238931596705,0.4539038842142231,0.0
+2,0,3,Winter_Ind,Strength_Degradation,1. Winter_Ind,4. Strength_Degradation,-0.0038248694525735796,1.4629626329230515e-05,0.586
+3,0,4,Winter_Ind,Rotational_RPM,1. Winter_Ind,5. Rotational_RPM,0.6668860037970711,0.44473694206042713,0.0
+4,0,5,Winter_Ind,Energy_Yield,1. Winter_Ind,6. Energy_Yield,0.276658842662099,0.07654011522313205,0.0
+5,0,6,Winter_Ind,Perceived_Noise,1. Winter_Ind,7. Perceived_Noise,-0.6173872182715157,0.3811669772850401,0.0
+6,1,2,Sea_Temperature,Wind_Speed,2. Sea_Temperature,3. Wind_Speed,-0.6171003477151239,0.3808128391501268,0.0
+7,1,3,Sea_Temperature,Strength_Degradation,2. Sea_Temperature,4. Strength_Degradation,0.006073108406212746,3.6882645713611924e-05,0.4
+8,1,4,Sea_Temperature,Rotational_RPM,2. Sea_Temperature,5. Rotational_RPM,-0.6105755712388202,0.37280252819361165,0.0
+9,1,5,Sea_Temperature,Energy_Yield,2. Sea_Temperature,6. Energy_Yield,-0.253893419661756,0.06446186854754055,0.0
+10,1,6,Sea_Temperature,Perceived_Noise,2. Sea_Temperature,7. Perceived_Noise,0.5663055603584637,0.3207019876929136,0.0
+11,2,3,Wind_Speed,Strength_Degradation,3. Wind_Speed,4. Strength_Degradation,0.002174478509085203,4.728356786473407e-06,0.753
+12,2,4,Wind_Speed,Rotational_RPM,3. Wind_Speed,5. Rotational_RPM,0.9893252895655099,0.9787645285738801,0.0
+13,2,5,Wind_Speed,Energy_Yield,3. Wind_Speed,6. Energy_Yield,0.4125605944303401,0.17020624407671556,0.0
+14,2,6,Wind_Speed,Perceived_Noise,3. Wind_Speed,7. Perceived_Noise,-0.9260354716396036,0.8575416947347831,0.0
+15,3,4,Strength_Degradation,Rotational_RPM,4. Strength_Degradation,5. Rotational_RPM,0.0012643067976698024,1.5984716786340706e-06,0.8555
+16,3,5,Strength_Degradation,Energy_Yield,4. Strength_Degradation,6. Energy_Yield,-0.005292396437763131,2.8009460054447878e-05,0.4655
+17,3,6,Strength_Degradation,Perceived_Noise,4. Strength_Degradation,7. Perceived_Noise,-0.0010220718558691516,1.0446308785598118e-06,0.8865
+18,4,5,Rotational_RPM,Energy_Yield,5. Rotational_RPM,6. Energy_Yield,0.4178399955591925,0.174590261888906,0.0
+19,4,6,Rotational_RPM,Perceived_Noise,5. Rotational_RPM,7. Perceived_Noise,-0.9090754865214411,0.8264182401941949,0.0
+20,5,6,Energy_Yield,Perceived_Noise,6. Energy_Yield,7. Perceived_Noise,-0.3761396562150843,0.14148104097760178,0.0
