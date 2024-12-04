@@ -20,8 +20,8 @@ digraph Ledgend {
 	node [color=white]
 	intercept
 	Exogenous -> Observed [label="Effect, adjusted pvalue < 0.05" color=black]
-	Observed -> Latent [label="Effect, adjusted pvalue > 0.05" color="#FF5800"]
+	Observed -> Latent [label="Effect, adjusted pvalue > 0.05" color=black style=dashed]
 	Exogenous -> Observed [label="Covariance Equivalance, adjusted pvalue < 0.05" color=black dir=both]
-	Observed -> Latent [label="Covariance Equivalance, adjusted pvalue > 0.05" color="#FFB414" dir=both]
+	Observed -> Latent [label="Covariance Equivalance, adjusted pvalue > 0.05" color=black dir=both style=dashed]
 	Latent -> Outcome [label="" color=black]
 }

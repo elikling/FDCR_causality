@@ -12,13 +12,13 @@ AvaGoldDark  = "#E6A61C"
 l = Digraph('Ledgend',format='png')
 l.attr(overlap='scale')
 l.attr(splines='True')
-l.attr('edge', fontsize='12')
+l.attr('edge', fontsize='20')
 
 l.attr('node',fillcolor="white")
 l.attr('node',color='black')
 l.attr('node',shape='')
 l.attr('node',style="filled")
-l.attr('node',fontsize='12') 
+l.attr('node',fontsize='20') 
 
 l.attr('node',shape='triangle')   
 l.node("Exogenous")
@@ -38,9 +38,11 @@ l.attr('node',color="white")
 l.node("intercept")
 
 l.edge("Exogenous" , "Observed"  , label="Effect, adjusted pvalue < 0.05"                        , color="black"                  )
-l.edge("Observed"  , "Latent"    , label="Effect, adjusted pvalue > 0.05"                        , color=AvaOrangeLight           )
+#l.edge("Observed"  , "Latent"    , label="Effect, adjusted pvalue > 0.05"                        , color=AvaOrangeLight           )
+l.edge("Observed"  , "Latent"    , label="Effect, adjusted pvalue > 0.05"                        , color="black", style="dashed"           )
 l.edge("Exogenous" , "Observed"  , label="Covariance Equivalance, adjusted pvalue < 0.05"        , color="black"      , dir="both")
-l.edge("Observed"  , "Latent"    , label="Covariance Equivalance, adjusted pvalue > 0.05"        , color=AvaGoldLight , dir="both")
+#l.edge("Observed"  , "Latent"    , label="Covariance Equivalance, adjusted pvalue > 0.05"        , color=AvaGoldLight , dir="both")
+l.edge("Observed"  , "Latent"    , label="Covariance Equivalance, adjusted pvalue > 0.05"        , color="black", style="dashed" , dir="both")
 l.edge("Latent" , "Outcome"      , label= ""                                                     , color="black"                  )
 
 l.save()
@@ -141,16 +143,17 @@ def scm_results_plot(dataVars, scmedges_in, name):
     g.attr(overlap='scale')
     g.attr(splines='True')
 
-    g.attr('edge', fontsize='12')
+    g.attr('edge', fontsize='20')
 
     g.attr('node',fillcolor="white")
     g.attr('node',color='black')
     g.attr('node',shape='')
     g.attr('node',style="filled")
-    g.attr('node',fontsize='12') 
+    g.attr('node',fontsize='20') 
    
     #latent variables
-    g.attr('node',shape='circle')
+    #g.attr('node',shape='circle')
+    g.attr('node',shape='plain')
     for lv in latantVars:
         g.node(lv,label=lv) 
 
@@ -183,13 +186,15 @@ def scm_results_plot(dataVars, scmedges_in, name):
         if (np.isnan(row['p-value'])):
             pvalue = "*"
         else:
-            pvalue = "p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}".format(row['Estimate'])  
+            pvalue = "   p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}     ".format(row['Estimate'])  
 
         if (row['op'] == '~'):
             if (row['p-value'] < 0.05):
                g.edge(row['rval'], row['lval'], label=pvalue,  color="black", lblstyle="above, sloped")
             else:
-               g.edge(row['rval'], row['lval'], label=pvalue, color=AvaOrangeLight, lblstyle="above, sloped")
+               # 01 Dec 2024: go black and white
+               #g.edge(row['rval'], row['lval'], label=pvalue, color=AvaOrangeLight, lblstyle="above, sloped")
+               g.edge(row['rval'], row['lval'], label=pvalue, color="black", style="dashed", lblstyle="above, sloped")
         
     g.save()
     g.render(view=True)
@@ -275,16 +280,17 @@ def scm_induced_covariances_plot(dataVars, scmedges_in, name):
     g.attr(overlap='scale')
     g.attr(splines='True')
 
-    g.attr('edge', fontsize='12')
+    g.attr('edge', fontsize='20')
 
     g.attr('node',fillcolor="white")
     g.attr('node',color='black')
     g.attr('node',shape='')
     g.attr('node',style="filled")
-    g.attr('node',fontsize='12') 
+    g.attr('node',fontsize='20') 
 
     #latent variables
-    g.attr('node',shape='circle')
+    # g.attr('node',shape='circle')
+    g.attr('node',shape='plain')
     for lv in latantVars:
         #print("latent:",lv)
         g.node(lv,label=lv) 
@@ -309,13 +315,14 @@ def scm_induced_covariances_plot(dataVars, scmedges_in, name):
         if (np.isnan(row['p-value'])):
             pvalue = "*"
         else:
-            pvalue = "p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}".format(row['Estimate'])  
+            pvalue = "  p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}   ".format(row['Estimate'])  
 
         if (row['op'] == '~~'):
                 if (row['p-value'] < 0.05):
                    g.edge(row['rval'], row['lval'], label=pvalue,  dir="both", color="black", lblstyle="above, sloped")
                 else:
-                   g.edge(row['rval'], row['lval'], label=pvalue,  dir="both", color=AvaGoldLight, lblstyle="above, sloped")
+                   # g.edge(row['rval'], row['lval'], label=pvalue,  dir="both", color=AvaGoldLight, lblstyle="above, sloped")
+                   g.edge(row['rval'], row['lval'], label=pvalue,  dir="both", color="black", style="dashed", lblstyle="above, sloped")
 
 
 

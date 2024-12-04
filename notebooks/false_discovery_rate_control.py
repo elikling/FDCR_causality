@@ -14,7 +14,7 @@ def numberfy(x):
         nx=np.NaN
     return(nx)
 
-def adjusted_FDR_pvalues(unajusted_p_values: Union[np.ndarray, List[float]]) -> np.ndarray:
+def adjusted_FDR_pvalues(unadjusted_p_values: Union[np.ndarray, List[float]]) -> np.ndarray:
                         
     """ adjusts p-values for FDR using the standard Benjamini-Hochberg (Stepup) procedure
     
@@ -25,14 +25,14 @@ def adjusted_FDR_pvalues(unajusted_p_values: Union[np.ndarray, List[float]]) -> 
      adjusted_pvalues = smt.multipletests(pvals=(0.05, 0.01, 0.1), method='fdr_bh', is_sorted=False, returnsorted=False)[1]
      however, this does not allow for missing values which could occure is using semopy to estimate an SEM with a latent node
 
-    :param unajusted_p_values: An array or a list of p-values. [could include NANs]
+    :param unadjusted_p_values: An array or a list of p-values. [could include NANs]
     
     :return: Adjusted FDR p-Values in same order as the input pvaules. 
 
     """
 
-    mp=len(unajusted_p_values)
-    p_valsArr = np.array(unajusted_p_values)
+    mp=len(unadjusted_p_values)
+    p_valsArr = np.array(unadjusted_p_values)
 
     #before starting ensure numeric values and just count them - i.e. exlude null values
     m=0
@@ -42,12 +42,12 @@ def adjusted_FDR_pvalues(unajusted_p_values: Union[np.ndarray, List[float]]) -> 
         if p_vals[i] >= 0:
             m=m+1
         
-    #calcualte FDR adjusted pvalues
+    #calculate FDR adjusted pvalues
     ranked_p_values = rankdata(p_vals)
     adjfdr = p_vals * m / ranked_p_values
     adjfdr[adjfdr > 1] = 1
     
-    #rememebr if (k) is rejected (1)..(k) are rejected - the FDR adjustemnt shoud reflect that
+    #remember if (k) is rejected (1)..(k) are rejected - the FDR adjustemnt shoud reflect that
     IndexRanks = p_vals.argsort()
     minAP=1
     for i in range(mp-1,-1,-1):
@@ -59,9 +59,9 @@ def adjusted_FDR_pvalues(unajusted_p_values: Union[np.ndarray, List[float]]) -> 
     return adjfdr
 
 
-def adjusted_FDCR_pvalues(unajusted_p_values,
-                          belife_scores,
-                          intersection_belife_score=10000.0
+def adjusted_FDCR_pvalues(unadjusted_p_values,
+                          belief_scores,
+                          intersection_belief_score=10000.0
                           )-> np.ndarray:
     """ Adjusts p-values for FDR using the Benjamini-Kling Weighted FDCR control adding the Simes family statistic
     
@@ -70,83 +70,83 @@ def adjusted_FDCR_pvalues(unajusted_p_values,
     Benjamini Y, Kling Y. E. (2005) A Cost-Base approach to Multiplicity Control, technical paper 
         [can be downloaded at https://docs.google.com/a/businessken.com/viewer?a=v&pid=sites&srcid=YnVzaW5lc3NrZW4uY29tfGhvbWV8Z3g6MTMwODI4YmVmNjI5ZTc4Yg ]
 
-    the convertion of the belife scores to costs as per the original paper above is chosed to be the reciprocal.
+    the convertion of the belief scores to costs as per the original paper above is chosed to be the reciprocal.
 
-    :param unajusted_p_values: An array or a list of p-values. [could include NANs]
-    :param belife_scores: - vector of, non negaive, Belife Scores coresponding to the p-values
-                             Inf=the SME thinks the null hypotheiss is absolutly wrong = there is definatly somthing in it,
-                             0 = the SME belives the null hypotheis is an absolute truth - there is nothing to this claim
-                             thus the costs are the inverse of the belife
-                   these are relative belifes. if all are equal then we are back to the regular BH procedure [with the adition of the Simes statistic]
-                   assume len(unajusted_p_values) = len(belife_scores) and the elemets are coresponding
-    :param intersection_belife_score - belife score for the overall family statisitc - Siems
-    :return: a vectopr of length (len (unajusted_p_values) +1) where
-             the first (len (unajusted_p_values) are  Adjusted FDR p-Values in same order as the input pvaules. 
+    :param unadjusted_p_values: An array or a list of p-values. [could include NANs]
+    :param belief_scores: - vector of, non-negaive, belief Scores corresponding to the p-values
+                             Inf=the SME thinks the null hypothesiss is absolutly wrong = there is definitely something in it,
+                             0 = the SME belives the null hypothesis is an absolute truth - there is nothing to this claim
+                             thus the costs are the inverse of the belief
+                   these are relative beliefs. if all are equal then we are back to the regular BH procedure [with the adition of the Simes statistic]
+                   assume len(unadjusted_p_values) = len(belief_scores) and the elemets are corresponding
+    :param intersection_belief_score - belief score for the overall family statistic - Siems
+    :return: a vector of length (len (unadjusted_p_values) +1) where
+             the first (len (unadjusted_p_values) are  Adjusted FDR p-Values in same order as the input pvaules. 
              the last element is the Simes pvaule
     """
 
     #checks to implement
     # all pvalues are non negative
-    # all belife scores are numbers and are not missing - for now negative and missing belifes score are assigned a score of 0
-    if len(unajusted_p_values) > len(belife_scores):
-        print("there should be a belife score for each p-value")
+    # all belief scores are numbers and are not missing - for now negative and missing beliefs score are assigned a score of 0
+    if len(unadjusted_p_values) > len(belief_scores):
+        print("there should be a belief score for each p-value")
         return((-17))
 
-    mp=len(unajusted_p_values)
-    p_valsArr = np.array(unajusted_p_values)
-    belifeArr = np.array(belife_scores)
+    mp=len(unadjusted_p_values)
+    p_valsArr = np.array(unadjusted_p_values)
+    beliefArr = np.array(belief_scores)
 
     #before starting ensure numeric values and just count them - i.e. exlude null values
     m=0
     p_vals = np.empty(mp+1) # last element prepared for the Weighted Simes Statistic
-    belifeWeights = np.empty(mp+1)
-    sumBelifeWeights = 0
+    beliefWeights = np.empty(mp+1)
+    sumbeliefWeights = 0
     for i in range(mp):
         p_vals[i]        = numberfy(p_valsArr[i])
-        belifeWeights[i] = numberfy(belifeArr[i])
-        if  belifeWeights[i] >= 0:
-            belifeWeights[i] =  1/(belifeWeights[i]+0.00001) # the cost is the reciprocal of the belife + a small constant for zeros
+        beliefWeights[i] = numberfy(beliefArr[i])
+        if  beliefWeights[i] >= 0:
+            beliefWeights[i] =  1/(beliefWeights[i]+0.00001) # the cost is the reciprocal of the belief + a small constant for zeros
 
         if p_vals[i] >= 0:
-            sumBelifeWeights = sumBelifeWeights + belifeWeights[i]
+            sumbeliefWeights = sumbeliefWeights + beliefWeights[i]
             m=m+1
         else:
-            belifeWeights[i] = 0 # otherwise the cumulative weihgts will be messed up in following loops
+            beliefWeights[i] = 0 # otherwise the cumulative weights will be messed up in following loops
     
     # Weighted Simes Statistic (Benjamini & Hochberg 1997)
     IndexRanks = p_vals.argsort()
     PWeightedSimes = 999999999
-    cumulativeBelifeWeight = 0
+    cumulativebeliefWeight = 0
     for i in range(0,mp+1,1):
         pointer = int(IndexRanks[i])
         #dont incluide the place holder for the Simes statistic - we are calcuating it now
         if pointer < mp: 
-            cumulativeBelifeWeight = cumulativeBelifeWeight + belifeWeights[pointer]
-            wp = cumulativeBelifeWeight / sumBelifeWeights * p_vals[pointer]
+            cumulativebeliefWeight = cumulativebeliefWeight + beliefWeights[pointer]
+            wp = cumulativebeliefWeight / sumbeliefWeights * p_vals[pointer]
             if PWeightedSimes > wp:
                PWeightedSimes = wp  
 
     #add the Weighted Simes Statistic to the pvalues
     p_vals[mp] = PWeightedSimes
-    belifeWeights[mp] = 1/(intersection_belife_score+0.00001) 
-    sumBelifeWeights = sumBelifeWeights +  belifeWeights[mp]
+    beliefWeights[mp] = 1/(intersection_belief_score+0.00001) 
+    sumbeliefWeights = sumbeliefWeights +  beliefWeights[mp]
 
     #run through the p-values from biggest to samllest
     IndexRanks = p_vals.argsort()
-    cumulativeBelifeWeight = sumBelifeWeights
-    adjustedFDCR = np.empty(mp+1) #rememebr, last element is the Weighted Simes
+    cumulativebeliefWeight = sumbeliefWeights
+    adjustedFDCR = np.empty(mp+1) #remember, last element is the Weighted Simes
     minAP=1
     for i in range(mp,-1,-1):
         pointer = int(IndexRanks[i])
-        #step 1 - calcualte the raw FDCR adjestment
-        adjustedFDCR[pointer] = sumBelifeWeights/ cumulativeBelifeWeight * p_vals[pointer]
+        #step 1 - calculate the raw FDCR adjestment
+        adjustedFDCR[pointer] = sumbeliefWeights/ cumulativebeliefWeight * p_vals[pointer]
         if adjustedFDCR[pointer] > 1:
            adjustedFDCR[pointer] = 1.0  
-        #step 2 - rememebr if (k) is rejected (1)..(k) are rejected - the FDR adjustemnt shoud reflect that
+        #step 2 - remember if (k) is rejected (1)..(k) are rejected - the FDR adjustemnt shoud reflect that
         if adjustedFDCR[pointer] > minAP:
             adjustedFDCR [pointer] = minAP
         else:
             minAP = adjustedFDCR[pointer]
         #update cumulative weight for the next step
-        cumulativeBelifeWeight = cumulativeBelifeWeight - belifeWeights[pointer]
+        cumulativebeliefWeight = cumulativebeliefWeight - beliefWeights[pointer]
     return adjustedFDCR

@@ -7,12 +7,12 @@ digraph FDCR_model_estimates_02 {
 	node [shape=""]
 	node [style=filled]
 	node [fontsize=12]
-	node [shape=circle]
-	Shaply [label=Shaply]
+	node [shape=plain]
+	Simes [label=Simes]
 	node [shape=triangle]
 	Winter_Ind [label=Winter_Ind]
 	Strength_Degradation [label=Strength_Degradation]
-	Shaply [label=Shaply]
+	Simes [label=Simes]
 	node [shape=invtriangle]
 	Sea_Temperature [label=Sea_Temperature]
 	Energy_Yield [label=Energy_Yield]
@@ -33,32 +33,32 @@ digraph FDCR_model_estimates_02 {
 	"Rotational_RPM Intercept" [label="Rotational_RPM Intercept"]
 	"Energy_Yield Intercept" [label="Energy_Yield Intercept"]
 	"Perceived_Noise Intercept" [label="Perceived_Noise Intercept"]
-	"Sea_Temperature Intercept" -> Sea_Temperature [label="p-value =    0.0000
- Est. =     19.99" color=black lblstyle="above, sloped"]
-	Winter_Ind -> Sea_Temperature [label="p-value =    0.0000
- Est. =     -9.99" color=black lblstyle="above, sloped"]
-	"Wind_Speed Intercept" -> Wind_Speed [label="p-value =    0.0000
- Est. =     39.96" color=black lblstyle="above, sloped"]
-	Winter_Ind -> Wind_Speed [label="p-value =    0.0000
- Est. =     19.97" color=black lblstyle="above, sloped"]
-	"Rotational_RPM Intercept" -> Rotational_RPM [label="p-value =    0.0000
- Est. =      1.20" color=black lblstyle="above, sloped"]
-	Wind_Speed -> Rotational_RPM [label="p-value =    0.0000
- Est. =      0.10" color=black lblstyle="above, sloped"]
-	"Energy_Yield Intercept" -> Energy_Yield [label="p-value =    0.0000
- Est. =     10.05" color=black lblstyle="above, sloped"]
-	Rotational_RPM -> Energy_Yield [label="p-value =    0.0000
- Est. =      0.66" color=black lblstyle="above, sloped"]
-	Strength_Degradation -> Energy_Yield [label="p-value =    0.0000
- Est. =     -0.13" color=black lblstyle="above, sloped"]
-	"Perceived_Noise Intercept" -> Perceived_Noise [label="p-value =    0.0000
- Est. =     19.96" color=black lblstyle="above, sloped"]
-	Rotational_RPM -> Perceived_Noise [label="p-value =    0.0000
- Est. =      0.65" color=black lblstyle="above, sloped"]
-	Strength_Degradation -> Perceived_Noise [label="p-value =    0.0000
- Est. =      0.04" color=black lblstyle="above, sloped"]
-	Wind_Speed -> Perceived_Noise [label="p-value =    0.0000
- Est. =     -0.25" color=black lblstyle="above, sloped"]
-	Shaply -> Energy_Yield [label="p-value =    0.0000
- Est. =       nan" color=black lblstyle="above, sloped"]
+	"Sea_Temperature Intercept" -> Sea_Temperature [label="   p-value =    0.0000
+ Est. =     19.99     " color=black lblstyle="above, sloped"]
+	Winter_Ind -> Sea_Temperature [label="   p-value =    0.0000
+ Est. =     -9.99     " color=black lblstyle="above, sloped"]
+	"Wind_Speed Intercept" -> Wind_Speed [label="   p-value =    0.0000
+ Est. =     39.96     " color=black lblstyle="above, sloped"]
+	Winter_Ind -> Wind_Speed [label="   p-value =    0.0000
+ Est. =     19.97     " color=black lblstyle="above, sloped"]
+	"Rotational_RPM Intercept" -> Rotational_RPM [label="   p-value =    0.0000
+ Est. =      1.20     " color=black lblstyle="above, sloped"]
+	Wind_Speed -> Rotational_RPM [label="   p-value =    0.0000
+ Est. =      0.10     " color=black lblstyle="above, sloped"]
+	"Energy_Yield Intercept" -> Energy_Yield [label="   p-value =    0.0000
+ Est. =     10.05     " color=black lblstyle="above, sloped"]
+	Rotational_RPM -> Energy_Yield [label="   p-value =    0.0000
+ Est. =      0.66     " color=black lblstyle="above, sloped"]
+	Strength_Degradation -> Energy_Yield [label="   p-value =    0.0000
+ Est. =     -0.13     " color=black lblstyle="above, sloped"]
+	"Perceived_Noise Intercept" -> Perceived_Noise [label="   p-value =    0.0000
+ Est. =     19.96     " color=black lblstyle="above, sloped"]
+	Rotational_RPM -> Perceived_Noise [label="   p-value =    0.0000
+ Est. =      0.65     " color=black lblstyle="above, sloped"]
+	Strength_Degradation -> Perceived_Noise [label="   p-value =    0.0000
+ Est. =      0.04     " color=black lblstyle="above, sloped"]
+	Wind_Speed -> Perceived_Noise [label="   p-value =    0.0000
+ Est. =     -0.25     " color=black lblstyle="above, sloped"]
+	Simes -> Energy_Yield [label="   p-value =    0.0000
+ Est. =       nan     " color=black lblstyle="above, sloped"]
 }
