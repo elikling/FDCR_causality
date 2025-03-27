@@ -9,16 +9,25 @@ AvaOrangeDark  = "#DC4600"
 AvaGoldLight = "#FFB414"
 AvaGoldDark  = "#E6A61C"
 
-l = Digraph('Ledgend',format='png')
-l.attr(overlap='scale')
+l = Digraph('Ledgend',format='png',filename='figs/Ledgend')
+l.attr('graph', dpi='600')  # Higher DPI for print quality
+l.attr('graph', size='9,9!')  # Larger canvas size
+
+#l.attr(overlap='scale')
 l.attr(splines='True')
+l.attr(overlap='false')  # Prevent node overlapping
+#l.attr(splines='ortho')  # More structured edge routing
+
+l.attr('node', fontname='Arial')  # Use a professional, clear font
+l.attr('edge', fontname='Arial')
+
 l.attr('edge', fontsize='20')
 
 l.attr('node',fillcolor="white")
 l.attr('node',color='black')
 l.attr('node',shape='')
 l.attr('node',style="filled")
-l.attr('node',fontsize='20') 
+l.attr('node',fontsize='18') 
 
 l.attr('node',shape='triangle')   
 l.node("Exogenous")
@@ -46,7 +55,7 @@ l.edge("Observed"  , "Latent"    , label="Covariance Equivalance, adjusted pvalu
 l.edge("Latent" , "Outcome"      , label= ""                                                     , color="black"                  )
 
 l.save()
-l.render(view=True)
+l.render()
 display(l)
 
 
@@ -140,8 +149,16 @@ def scm_results_plot(dataVars, scmedges_in, name):
     
     #define the DAG
     g = Digraph(name,format='png')
-    g.attr(overlap='scale')
+    g.attr('graph', dpi='600')  # Higher DPI for print quality
+    g.attr('graph', size='9,9!')  # Larger canvas size
+
+    #g.attr(overlap='scale')
     g.attr(splines='True')
+    g.attr(overlap='false')  # Prevent node overlapping
+    #g.attr(splines='ortho')  # More structured edge routing
+
+    g.attr('node', fontname='Arial')  # Use a professional, clear font
+    g.attr('edge', fontname='Arial')
 
     g.attr('edge', fontsize='20')
 
@@ -186,7 +203,7 @@ def scm_results_plot(dataVars, scmedges_in, name):
         if (np.isnan(row['p-value'])):
             pvalue = "*"
         else:
-            pvalue = "   p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}     ".format(row['Estimate'])  
+            pvalue = "   p-value =" + "{:.4f}".format(row['p-value'])+";\n Estimate ="+ "{:.2f}     ".format(row['Estimate'])  
 
         if (row['op'] == '~'):
             if (row['p-value'] < 0.05):
@@ -197,7 +214,7 @@ def scm_results_plot(dataVars, scmedges_in, name):
                g.edge(row['rval'], row['lval'], label=pvalue, color="black", style="dashed", lblstyle="above, sloped")
         
     g.save()
-    g.render(view=True)
+    g.render()
     return(g)
     
 
@@ -277,8 +294,16 @@ def scm_induced_covariances_plot(dataVars, scmedges_in, name):
     
     #define the DAG
     g = Digraph(name,format='png')
-    g.attr(overlap='scale')
+    g.attr('graph', dpi='600')  # Higher DPI for print quality
+    g.attr('graph', size='9,9!')  # Larger canvas size
+
+    #g.attr(overlap='scale')
     g.attr(splines='True')
+    g.attr(overlap='false')  # Prevent node overlapping
+    #g.attr(splines='ortho')  # More structured edge routing
+
+    g.attr('node', fontname='Arial')  # Use a professional, clear font
+    g.attr('edge', fontname='Arial')
 
     g.attr('edge', fontsize='20')
 
@@ -315,7 +340,7 @@ def scm_induced_covariances_plot(dataVars, scmedges_in, name):
         if (np.isnan(row['p-value'])):
             pvalue = "*"
         else:
-            pvalue = "  p-value =" + "{:10.4f}".format(row['p-value'])+"\n Est. ="+ "{:10.2f}   ".format(row['Estimate'])  
+            pvalue = "  p-value =" + "{:.4f}".format(row['p-value'])+";\n Estimate ="+ "{:.2f}   ".format(row['Estimate'])  
 
         if (row['op'] == '~~'):
                 if (row['p-value'] < 0.05):
@@ -327,5 +352,6 @@ def scm_induced_covariances_plot(dataVars, scmedges_in, name):
 
 
     g.save()
-    g.render(view=True)
+    #g.render(view=True)
+    g.render()
     return(g)    

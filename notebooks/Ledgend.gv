@@ -1,12 +1,16 @@
 digraph Ledgend {
-	overlap=scale
+	graph [dpi=600]
+	graph [size="9,9!"]
 	splines=True
-	edge [fontsize=12]
+	overlap=false
+	node [fontname=Arial]
+	edge [fontname=Arial]
+	edge [fontsize=20]
 	node [fillcolor=white]
 	node [color=black]
 	node [shape=""]
 	node [style=filled]
-	node [fontsize=12]
+	node [fontsize=20]
 	node [shape=triangle]
 	Exogenous
 	node [shape=box]
